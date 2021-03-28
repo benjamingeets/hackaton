@@ -1,6 +1,6 @@
 [
     {
-        "name":"Slime",
+        "name":"Blue",
         "hpMax":25,
         "attack":11,
         "armor":1,
@@ -9,7 +9,7 @@
         
     },
     {
-        "name":"Snake",
+        "name":"Red",
         "hpMax":15,
         "attack":16,
         "armor":6,

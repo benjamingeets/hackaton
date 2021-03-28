@@ -4,35 +4,32 @@
 
     <h2>Welcome, {{ $store.state.player.name }}</h2>
 
-    <p>You've got {{ this.$store.state.player.bag.gold }} 🪙</p>
-
+    <p>You've got {{ this.$store.state.player.bag.gold }}g</p>
+    <p v-if="poor">It's too expensive!</p>
     <div class="stock">
       <div class="weapon">
         <p>Weapon level</p>
-        <img src="https://via.placeholder.com/150x100" alt="">
-        <button class="nes-btn" @click="buy(1)">Buy {{prices.weapon}}</button>
+        <button class="nes-btn" @click="buy(1)">Buy for {{prices.weapon}}g</button>
       </div>
       <div class="stat">
         <p>+5 {{statToSell}}</p>
-        <img src="https://via.placeholder.com/150x100" alt="">
-        <button class="nes-btn" v-if="!flagStat" @click="buy(2)">Buy for {{prices.stat}}</button>
+        <button class="nes-btn" v-if="!flagStat" @click="buy(2)">Buy for {{prices.stat}}g</button>
       </div>
       <div class="potion">
-        <p> {{nbrPotions}} Potions</p>
-        <img src="https://via.placeholder.com/150x100" alt="">
-        <button class="nes-btn" @click="buy(3)">Buy for {{prices.potions}}</button>
+        <p> {{nbrPotions}} Medikit</p>
+        <button class="nes-btn" @click="buy(3)">Buy for {{prices.potions}}g</button>
       </div>
     </div>
     
     <div class="back">
-        <router-link to="/fight/slime">
+        <router-link to="/nextFight">
         <button class="nes-btn">Let's fight</button>
         </router-link>
     </div>
     <div class="nes-container with-title">
       <div class="title">Inventory</div>
       <p>Weapon lvl : {{$store.state.player.weaponLvl}}</p>
-      <p>{{$store.state.player.bag.potionsQuantity}} potions</p>
+      <p>{{$store.state.player.bag.potionsQuantity}} medikits</p>
     </div>
   </div>
 </template>
@@ -89,7 +86,8 @@ export default {
           weapon:0,
           stat:0,
           potions:0
-        }
+        },
+        poor:false
     };
   },
   methods:{
@@ -101,7 +99,7 @@ export default {
     buy(params){
       switch (params) {
         case 1:
-
+//Choix arme
           break;
         case 2:
           
@@ -111,7 +109,7 @@ export default {
             this.flagStat = true
           }
           else{
-            this.lastAction = "Pas assez d'argent"
+            this.poor = true
           }
           break;
         case 3:
@@ -120,7 +118,7 @@ export default {
             this.$store.commit('spendGold',this.prices.potions)
           }
           else{
-            this.lastAction = "Pas assez d'argent"
+            this.poor = true
           }
           break;
         default:
@@ -145,7 +143,7 @@ export default {
           this.statToSell = "Attack"
           break;
         case 3:
-          this.statToSell = "hpMax"
+          this.statToSell = "HP"
           break;
         default:
           break;

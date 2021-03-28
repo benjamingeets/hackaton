@@ -36,6 +36,7 @@ export default new Vuex.Store({
     },
     upgradeWeapon(state) {
       state.player.weaponLvl++;
+      
     },
     lvlUp(state) {
       state.player.xp = state.player.xp - state.player.xpMax;

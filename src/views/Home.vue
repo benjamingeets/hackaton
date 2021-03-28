@@ -1,8 +1,8 @@
 <template>
   <div class="home">
-    <img src="http://via.placeholder.com/350x100" alt="">
+    <img src="/favicon.svg" alt="">
     <h1>Bertrand's Quest</h1>
-    <p>Hackathon edition</p>
+    <p>Enter player name :</p>
     <input class="nes-input" type="text" v-model='$store.state.player.name'>
     <router-link to="/select-weapon"><button class="nes-btn">Start new game</button></router-link>
   </div>
@@ -23,12 +23,24 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/assets/css/_variables.scss";
+@keyframes zoom {
+  0% {transform: scale(1);}
+  50% {transform: scale(1.2);}
+  100% {transform: scale(1);}
+}
+
 .home{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  img{
+    
+        animation-name: zoom;
+       animation-duration: 4s;
+       animation-iteration-count: infinite;
+  }
   button{
     width: 200px;
     height: 100px;

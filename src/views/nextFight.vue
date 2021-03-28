@@ -6,19 +6,20 @@
 
 <script>
 export default {
-  mounted(pif){
-    pif = Math.floor(Math.random()*10)
+  mounted(){
+    const pif = Math.random() * (100 - 1) + 1;
+    console.log(pif)
     if(pif<50) {
-      this.$router.push({ path: "/fight/slime" });
+      this.$router.push({ path: "/fight/blue" });
     }
-    if(50>=pif<95) {
-      this.$router.push({ path: "/fight/serpent" });
+    if(50>=pif && pif < 95) {
+      this.$router.push({ path: "/fight/red" });
     }
     if(pif>=95 && this.$store.state.player.lvl>9) {
       this.$router.push({ path: "/fight/boss" });
     }
     else{
-      this.$router.push({ path: "/fight/slime" });
+      this.$router.push({ path: "/fight/red" });
     }
   }
 }

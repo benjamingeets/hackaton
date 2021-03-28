@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="select-weapon">
     <p>{{ $store.state.player.name }}, choisi ton arme :</p>
     <div>
       <label>
@@ -12,7 +12,7 @@
         <span>Poing</span>
       </label>
     </div>
-    <router-link to="/fight/slime"><button class="nes-btn">Valider</button></router-link>
+    <router-link to="/nextFight"><button class="nes-btn">Valider</button></router-link>
   </div>
 </template>
 
@@ -33,5 +33,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.select-weapon{
+  margin:auto;
+  width: 500px;
+  padding-top:200px;
+}
 </style>
