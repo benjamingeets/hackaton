@@ -147,16 +147,24 @@ export default {
           //Si *défend*
           this.mob.hp = this.mob.hp - damages / 2;
           this.mob.preventDamages = false;
+          this.lastAction =
+          this.player.name +
+          " hits " +
+          this.mob.name +
+          " and does " +
+          damages / 2 +
+          " damages";
         } else {
           this.mob.hp = this.mob.hp - damages;
-        }
-        this.lastAction =
+          this.lastAction =
           this.player.name +
           " hits " +
           this.mob.name +
           " and does " +
           damages +
           " damages";
+        }
+        
       } else {
         this.lastAction = this.player.name + " didn't make any damage";
       }
@@ -205,11 +213,14 @@ export default {
               //Si *défend*
               this.player.hp = this.player.hp - damages / 2;
               this.player.preventDamages = false;
+              this.lastAction =
+              "Monster attacks and inflicts " + damages / 2 + " damages";
             } else {
               this.player.hp = this.player.hp - damages;
-            }
-            this.lastAction =
+              this.lastAction =
               "Monster attacks and inflicts " + damages + " damages";
+            }
+
           } else {
             this.mob.preventDamages = true;
             this.lastAction = "Monster prepare to protect himself";
