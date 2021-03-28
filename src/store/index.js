@@ -7,6 +7,7 @@ export default new Vuex.Store({
   state: {
     player: {
       name: "Bertrand",
+      infinite : false,
       xp: 0,
       xpMax: 6,
       lvl: 1,
@@ -25,6 +26,11 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    godMode(state) {
+      state.player.stats.attack = 667
+      state.player.stats.hpMax = 667
+      state.player.stats.armor = 667
+    },
     earnGold(state, amount) {
       state.player.bag.gold = state.player.bag.gold + amount;
     },
@@ -36,7 +42,7 @@ export default new Vuex.Store({
     },
     upgradeWeapon(state) {
       state.player.weaponLvl++;
-      
+
     },
     lvlUp(state) {
       state.player.xp = state.player.xp - state.player.xpMax;

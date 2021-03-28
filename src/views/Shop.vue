@@ -8,14 +8,19 @@
     <p v-if="poor">It's too expensive!</p>
     <div class="stock">
       <div class="weapon">
+        <img src="/assets/images/shop/weapon_up.svg" alt="">
         <p>Weapon level</p>
-        <button class="nes-btn" @click="buy(1)">Buy for {{prices.weapon}}g</button>
+        <button class="nes-btn" v-if="!flagWeapon" @click="buy(1)">Buy for {{prices.weapon}}g</button>
       </div>
       <div class="stat">
+        
+        <img :src="'/assets/images/shop/' + statToSell + '_up.svg'" alt="">
         <p>+5 {{statToSell}}</p>
         <button class="nes-btn" v-if="!flagStat" @click="buy(2)">Buy for {{prices.stat}}g</button>
       </div>
       <div class="potion">
+        
+        <img src="/assets/images/shop/kit.svg" alt="">
         <p> {{nbrPotions}} Medikit</p>
         <button class="nes-btn" @click="buy(3)">Buy for {{prices.potions}}g</button>
       </div>
@@ -57,11 +62,13 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      width: 30%;
       p{
         margin:0;
       }
       img{
         margin:20px 0;
+        height: 100px;
       }
     }
   }
@@ -69,6 +76,15 @@
     margin-top: 50px;
   }
 }
+
+@media (max-width:750px) {
+  .shop{
+    .stock{
+      flex-direction: column;
+    }
+  }
+}
+
 </style>
 
 <script>
@@ -82,6 +98,7 @@ export default {
         weaponPrice:0,
         statToSell:"",
         flagStat:false,
+        flagWeapon:false,
         prices:{
           weapon:0,
           stat:0,
@@ -99,7 +116,15 @@ export default {
     buy(params){
       switch (params) {
         case 1:
-//Choix arme
+           if(this.prices.weapon <= this.$store.state.player.bag.gold){
+             this.$store.commit('upgradeWeapon')
+            this.$store.commit('spendGold',this.prices.weapon)
+            this.flagWeapon = true
+           }
+           else{
+             
+            this.poor = true
+           }
           break;
         case 2:
           

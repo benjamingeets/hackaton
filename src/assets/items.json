@@ -2,12 +2,14 @@
   "Weapons": 
   [
     {
-      "name":"Assault weapon piou piou",
-      "dmg":10
+      "name":"Assault weapon",
+      "dmg":10,
+      "dmgBonus":1.5
     },
     {
-      "name":"Rifle boum boum",
-      "dmg":15
+      "name":"Rifle",
+      "dmg":15,
+      "dmgBonus":1
     }
   ],
   "Healing": {

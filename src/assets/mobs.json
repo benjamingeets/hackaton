@@ -19,7 +19,7 @@
     {
         "name":"Boss",
         "hpMax":95,
-        "attack":11,
+        "attack":20,
         "armor":8,
         "xpLoot":25,
         "goldLoot":20
