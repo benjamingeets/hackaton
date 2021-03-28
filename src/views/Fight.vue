@@ -141,8 +141,7 @@ export default {
       let damages =
         this.player.attack -
         this.mob.armor +
-        this.player.weapon.damages +
-        Math.floor(this.$store.state.player.weaponLvl * 1.5);
+        this.totalDamages
       if (damages > 0) {
         if (this.mob.preventDamages) {
           //Si *défend*
@@ -325,7 +324,7 @@ export default {
 .fight {
   height: 100%;
   .display {
-    background-image: url("/background.svg");
+    background-image: url("/assets/images/background.png");
     background-size: cover;
     display: flex;
     padding: 15px 10px 0 10px;
