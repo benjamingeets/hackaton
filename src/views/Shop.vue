@@ -21,7 +21,7 @@
       <div class="potion">
         
         <img src="/assets/images/shop/kit.svg" alt="">
-        <p> {{nbrPotions}} Medikit</p>
+        <p> {{nbrPotions}} Medikit(s)</p>
         <button class="nes-btn" @click="buy(3)">Buy for {{prices.potions}}g</button>
       </div>
     </div>
@@ -34,7 +34,7 @@
     <div class="nes-container with-title">
       <div class="title">Inventory</div>
       <p>Weapon lvl : {{$store.state.player.weaponLvl}}</p>
-      <p>{{$store.state.player.bag.potionsQuantity}} medikits</p>
+      <p>{{$store.state.player.bag.potionsQuantity}} medikit(s)</p>
     </div>
   </div>
 </template>

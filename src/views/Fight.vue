@@ -7,13 +7,13 @@
           :max="player.hpMax"
           :value="player.hp"
         ></progress>
-        <p>{{ player.hp }} / {{ player.hpMax }} HP</p>
+        <p>{{ player.hp }} / {{ player.hpMax }} <img style="height:20px;width:20px;animation:none" src="/assets/images/heart.svg" alt=""></p>
         <img id="player-image" :src="playerPath" alt="" />
         <div class="stats">
           <h2>{{ player.name }} Lv.{{ player.lvl }}</h2>
-          <p>{{ player.attack }} 🗡️</p>
+          <p>{{ player.attack }} <img style="height:16px;width:16px;animation:none" src="/assets/images/weapon.svg" alt=""></p>
           <p>
-            {{ player.armor }} 🛡️
+            {{ player.armor }} <img style="height:16px;width:16px;animation:none" src="/assets/images/armor.svg" alt="">
             <span v-if="player.preventDamages">(shield)</span>
           </p>
         </div>
@@ -24,7 +24,7 @@
           :max="mob.hpMax"
           :value="mob.hp"
         ></progress>
-        <p>{{ mob.hp }} / {{ mob.hpMax }} HP</p>
+        <p><img style="height:20px;width:20px;animation:none" src="/assets/images/heart.svg" alt=""> {{ mob.hp }} / {{ mob.hpMax }} </p>
         <img
           id="enemy-image"
           :src="enemyPath"
@@ -33,9 +33,9 @@
         <div class="stats">
           <h2>{{ mob.name }}</h2>
 
-          <p>🗡️ {{ mob.attack }}</p>
+          <p><img style="height:16px;width:16px;animation:none" src="/assets/images/weapon.svg" alt=""> {{ mob.attack }}</p>
           <p>
-            <span v-if="mob.preventDamages">(shield)</span> 🛡️
+            <span v-if="mob.preventDamages">(shield)</span> <img style="height:16px;width:16px;animation:none" src="/assets/images/armor.svg" alt="">
             {{ mob.armor }}
           </p>
         </div>
@@ -58,7 +58,7 @@
     <div v-if="displayInventory && !fightEnd" class="nes-container with-title">
       <p class="title">Inventory</p>
       <p>Weapon: {{ player.weapon.name }} ({{ totalDamages }})</p>
-      <p>{{ this.$store.state.player.bag.potionsQuantity }} Medikits</p>
+      <p>{{ this.$store.state.player.bag.potionsQuantity }} Medikit(s)</p>
       <p>Money : {{ $store.state.player.bag.gold }}g</p>
       <p>Weapon lvl : {{ this.$store.state.player.weaponLvl }}</p>
     </div>
@@ -200,7 +200,7 @@ export default {
           let damages = this.mob.attack - this.player.armor;
           //Défini un timer pour laisser durer un peu
           const luck = Math.round(Math.random() * 100);
-          if (luck > 20) {
+          if (luck > 20 && damages > 0) {
             if (this.player.preventDamages) {
               //Si *défend*
               this.player.hp = this.player.hp - damages / 2;

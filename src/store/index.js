@@ -26,6 +26,9 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    nameError(state){
+      state.player.name = "Bertrand"
+    },
     godMode(state) {
       state.player.stats.attack = 667
       state.player.stats.hpMax = 667

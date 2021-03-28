@@ -2,9 +2,9 @@
   <div>
     <div class="select-weapon">
       <div class="imgSelect">
-          <img src="/assets/images/player.svg" alt="">
+        <img src="/assets/images/player.svg" alt="" />
       </div>
-      <h3>{{ $store.state.player.name }}, choose your weapon :</h3>
+      <p>{{ $store.state.player.name }}, choose your weapon :</p>
       <div>
         <label>
           <input
@@ -15,7 +15,7 @@
             v-model="$store.state.player.bag.weaponId"
             checked
           />
-          <span>Assault weapon</span>
+          <span>Assault (10 dmg, +1,5 by lvl)</span>
         </label>
         <br />
         <label>
@@ -26,7 +26,7 @@
             value="1"
             v-model="$store.state.player.bag.weaponId"
           />
-          <span>Riffle</span>
+          <span>Riffle (15 dmg, +1 by lvl)</span>
         </label>
       </div>
       <router-link to="/lore">
@@ -34,21 +34,20 @@
           Next
         </button>
       </router-link>
-    </div>
-    <div class="select-game-mode">
-      <h3>Game mode :</h3>
-      <div>
-        <label>
-          <input
-            type="checkbox"
-            class="nes-checkbox"
-            name="answer"
-            v-model="$store.state.infinite"
-          />
-          <span>Infinite</span> <br> <br>
-          <p>If not selected, game will stop at first boss.</p>
-        </label>
-      </div>
+      <p>Game mode :</p>
+      <label>
+        <input
+          type="checkbox"
+          class="nes-checkbox"
+          name="answer"
+          v-model="$store.state.infinite"
+        />
+        <span>Infinite</span>
+        
+      </label>
+      <p v-if="$store.state.infinite">
+          The game will not stop at first boss.
+        </p>
     </div>
   </div>
 </template>
@@ -56,18 +55,31 @@
 <script>
 export default {
   mounted() {
-    if(this.$store.state.player.name == "BertrandBg"){
+    if (this.$store.state.player.name == "BertrandBg") {
       this.$store.commit("godMode", this.goldEarned);
     }
   },
+  beforeMount() {
+    if (this.$store.state.player.name == "") {
+      //Si le nom est vide, on met bertrand
+      this.$store.commit("nameError");
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 .select-weapon {
   margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   width: 550px;
   padding-top: 50px;
+  button{
+    margin:50px 0;
+  }
   .imgSelect {
     img {
       width: 35%;
@@ -78,10 +90,5 @@ export default {
       padding-bottom: 50px;
     }
   }
-}
-.select-game-mode {
-  margin: auto;
-  width: 550px;
-  padding-top: 30px;
 }
 </style>
