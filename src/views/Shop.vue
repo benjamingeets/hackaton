@@ -13,7 +13,7 @@
         <button class="nes-btn" @click="buy(1)">Buy {{prices.weapon}}</button>
       </div>
       <div class="stat">
-        <p>+1 {{statToSell}}</p>
+        <p>+5 {{statToSell}}</p>
         <img src="https://via.placeholder.com/150x100" alt="">
         <button class="nes-btn" v-if="!flagStat" @click="buy(2)">Buy for {{prices.stat}}</button>
       </div>
@@ -109,14 +109,18 @@ export default {
             this.$store.commit('upgradeStat', this.statToSell)
             this.$store.commit('spendGold',this.prices.stat)
             this.flagStat = true
-          }else{
-            alert("Pas assez d'argent")
+          }
+          else{
+            this.lastAction = "Pas assez d'argent"
           }
           break;
         case 3:
           if(this.prices.potions<= this.$store.state.player.bag.gold){
             this.$store.commit("buyPotions", this.nbrPotions)
             this.$store.commit('spendGold',this.prices.potions)
+          }
+          else{
+            this.lastAction = "Pas assez d'argent"
           }
           break;
         default:
@@ -126,7 +130,7 @@ export default {
     },
     setPrices(){
       this.prices.weapon =  50*this.$store.state.player.weaponLvl
-      this.prices.stat =  100
+      this.prices.stat =  25*this.$store.state.player.stats.statsLvl
       this.prices.potions =  items.Healing.Potion.Price * this.nbrPotions
     },
     getRandomStat (min, max){

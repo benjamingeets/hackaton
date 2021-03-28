@@ -10,7 +10,7 @@
         <p>{{ player.hp }} / {{ player.hpMax }} HP</p>
         <img
           @click="playerIsDead()"
-          src="https://via.placeholder.com/100x200"
+          src="../assets/images/Perso Normal.svg"
           alt=""
         />
         <div class="stats">
@@ -29,7 +29,7 @@
           :value="mob.hp"
         ></progress>
         <p>{{ mob.hp }} / {{ mob.hpMax }} HP</p>
-        <img src="https://via.placeholder.com/100x200" alt="" />
+        <img src="../assets/images/EnnemiBleu.svg" alt="" />
         <div class="stats">
           <h2>{{ mob.name }}</h2>
 
@@ -145,7 +145,7 @@ export default {
     heal() {
       if (this.$store.state.player.bag.potionsQuantity > 0) {
         if(this.player.hp < this.player.hpMax){
-          this.player.hp = this.player.hp + items.Healing.Potion.Effect;
+          this.player.hp = this.player.hp + items.Healing.Potion.Effect * this.player.hpMax / 100;
         if (this.player.hp > this.player.hpMax) {
           this.player.hp = this.player.hpMax;
         }
@@ -266,6 +266,7 @@ export default {
     background-image: url("/background.svg");
     background-size: cover;
     display: flex;
+    padding:15px 10px 0 10px;
     .enemy,
     .myself {
       width: 50%;

@@ -15,6 +15,7 @@ export default new Vuex.Store({
         hpMax: 50,
         attack: 5,
         armor: 10,
+        statsLvl: 1
       },
       bag: {
         gold: 100,
@@ -47,20 +48,27 @@ export default new Vuex.Store({
     upgradeStat(state, option) {
       switch (option) {
         case "Armor":
-          state.player.stats.armor ++
+          state.player.stats.armor = state.player.stats.armor + 5
           break;
         case "hpMax":
-          state.player.stats.hpMax ++
+          state.player.stats.hpMax = state.player.stats.hpMax + 5
           break;
         case "Attack":
-          state.player.stats.attack ++
+          state.player.stats.attack = state.player.stats.attack + 5
           break;
         default:
           break;
       }
+      state.player.stats.statsLvl++
     },
     buyPotions(state, amount){
-      state.player.bag.potionsQuantity = state.player.bag.potionsQuantity + amount;
+      if(state.player.bag.potionsQuantity + amount <= 5) {
+        state.player.bag.potionsQuantity = state.player.bag.potionsQuantity + amount;
+      }
+      else {
+        state.player.bag.potionsQuantity = 5
+      }
+      
     },
     usePotion(state){
       state.player.bag.potionsQuantity--

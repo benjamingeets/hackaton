@@ -12,7 +12,7 @@
   ],
   "Healing": {
     "Potion": {
-        "Name":"Potion",
+      "Name":"Potion",
       "Price": 30,
       "Effect": 20
     }
