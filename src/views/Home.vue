@@ -5,7 +5,7 @@
     <p>Enter player name :</p>
     <input class="nes-input" type="text" v-model='$store.state.player.name'>
     <router-link to="/select-weapon"><button class="nes-btn">Start new game</button></router-link>
-    <small style="text-align:center">Made by <a target="_blank" href="https://www.linkedin.com/in/antoine-gowie/">Antoine Gowie</a> / <a target="_blank" href="https://benjamingeets.be">Benjamin Geets</a> / <a target="_blank" href="https://galandtristan.be">Tristan Galand</a> / <a target="_blank" href="https://www.linkedin.com/in/ugoporcu/">Ugo Porcu</a> - Fan2Bourgy</small>
+    <small style="text-align:center">Made by <a target="_blank" href="https://www.linkedin.com/in/antoine-gowie/">Antoine Gowie</a> / <a target="_blank" href="https://benjamingeets.be">Benjamin Geets</a> / <a target="_blank" href="https://www.linkedin.com/in/galandtristan/">Tristan Galand</a> / <a target="_blank" href="https://www.linkedin.com/in/ugoporcu/">Ugo Porcu</a> - Fan2Bourgy</small>
   </div>
 </template>
 
