@@ -5,6 +5,7 @@
     <p>Enter player name :</p>
     <input class="nes-input" type="text" v-model='$store.state.player.name'>
     <router-link to="/select-weapon"><button class="nes-btn">Start new game</button></router-link>
+    <small>Ce projet a été réalisé dans le cadre du Space Office Hackaton 2021. L'entièreté a été conçu, designé et codé en moins de 30h, tout n'est donc pas forcément au point 😊</small>
     <small style="text-align:center">Made by <a target="_blank" href="https://www.linkedin.com/in/antoine-gowie/">Antoine Gowie</a> / <a target="_blank" href="https://benjamingeets.be">Benjamin Geets</a> / <a target="_blank" href="https://www.linkedin.com/in/galandtristan/">Tristan Galand</a> / <a target="_blank" href="https://www.linkedin.com/in/ugoporcu/">Ugo Porcu</a> - Fan2Bourgy</small>
   </div>
 </template>
