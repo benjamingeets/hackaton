@@ -1,7 +1,11 @@
-# Projet pour le Space Office Hackaton
+# Bertrand's Quest 🔫
 
-Projet réalisé dans le cadre du Space Office Hackaton. 
+Ce projet a été développé en moins de 48h lors du Space Office Hackaton 2021 organisé par le Microsoft Inovation Center. En équipe, nous avons créé un petit jeu de combat au tour par tour.
 
-## Concept
+> 🏆 Grâce à notre travail, nous avons pu nous placer en **1ère position** et gagner le **Space Office Hackaton 2021**!
 
-Le concept du projet est un jeu dans sur le thème de *Mars* réalisé via Vue, VueX et Vue Router. 
+## Technologies
+
+- Vue.js 3
+- VueX
+- Vue Router
